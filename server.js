@@ -2,7 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const path = require('path');
 const sequelize = require('./models/index');
-const { User } = require('./models/user');
+const { User, Operations } = require('./models/user');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,8 +22,11 @@ app.use(session({
 
 app.use('/api', require('./routes/operations'));
 
-app.get('/', (req, res) => {
-    res.render('index')
+app.get('/', async (req, res) => {
+    const users = await User.findAll();
+    const operations = await Operations.findAll();
+
+    res.render('index', { users, operations });
 });
 
 app.get('/pay', (req, res) => {

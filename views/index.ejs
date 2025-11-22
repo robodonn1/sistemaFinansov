@@ -15,6 +15,58 @@
         <a href="/transfer"><button>Перевести</button></a>
     </main>
 
+    <h1>Таблица пользователей</h1>
+    <table>
+        <thead>
+            <th>Имя</th>
+            <th>Баланс</th>
+            <th>Номер счета</th>
+        </thead>
+        <% users.forEach(user=> { %>
+            <tbody>
+                <td>
+                    <%= user.login %>
+                </td>
+                <td>
+                    <%= user.balance %>
+                </td>
+                <td>
+                    <%= user.iban %>
+                </td>
+            </tbody>
+            <% }) %>;
+    </table>
+
+    <h1>Таблица ОПераций</h1>
+    <table>
+        <thead>
+            <th>Название</th>
+            <th>Вид</th>
+            <th>Сумма</th>
+            <th>Получатель</th>
+            <th>Отправитель</th>
+        </thead>
+        <% operations.forEach(operation=> { %>
+            <tbody>
+                <td>
+                    <%= operation.title %>
+                </td>
+                <td>
+                    <%= operation.name %>
+                </td>
+                <td>
+                    <%= operation.amount %>
+                </td>
+                <td>
+                    <%= operation.receiver %>
+                </td>
+                <td>
+                    <%= operation.sender %>
+                </td>
+            </tbody>
+            <% }) %>;
+    </table>
+
 </body>
 
 </html>
